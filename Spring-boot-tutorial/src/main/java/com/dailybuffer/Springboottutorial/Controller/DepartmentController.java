@@ -3,6 +3,7 @@ package com.dailybuffer.Springboottutorial.Controller;
 import com.dailybuffer.Springboottutorial.Services.DepartmentService;
 import com.dailybuffer.Springboottutorial.Services.DepartmentserviceImpl;
 import com.dailybuffer.Springboottutorial.entity.Department;
+import com.dailybuffer.Springboottutorial.error.DepartmentNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,7 @@ public class DepartmentController {
         return  departmentService.fetchDepartment();
     }
     @GetMapping("/departmentdata/{id}")
-    public  Department fetchDepartmentById(@PathVariable("id") Long departmentId){
+    public  Department fetchDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFound {
         return departmentService.fetchDepartmentById(departmentId);
 
     }
